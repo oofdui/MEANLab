@@ -15,12 +15,19 @@ exports.login = function(request,response){
 	console.log("Email : "+request.body.email);
 	console.log("Password : "+request.body.password);
 
+	if(request.body.remember == "remember"){
+		request.session.remember = true;
+		request.session.email = request.body.email;
+		request.sessionOptions.maxAge = 60000;//60000 milliseconds
+	}
+
 	response.render("index",{
 		title:"Logged in as "+request.body.email,
 		isLoggedIn:true
 	});
 };
 exports.logout = function(request,response){
+	request.session=null;
 	response.render("index",{
 		title:"Logout completed",
 		isLoggedIn:false
