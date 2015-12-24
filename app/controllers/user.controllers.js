@@ -19,6 +19,7 @@ exports.login = function(request,response){
 		request.session.remember = true;
 		request.session.email = request.body.email;
 		request.sessionOptions.maxAge = 60000;//60000 milliseconds
+		request.session.cookie.maxAge = 60000;
 	}
 
 	response.render("index",{
@@ -27,7 +28,7 @@ exports.login = function(request,response){
 	});
 };
 exports.logout = function(request,response){
-	request.session=null;
+	request.session = null;
 	response.render("index",{
 		title:"Logout completed",
 		isLoggedIn:false

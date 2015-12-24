@@ -3,10 +3,10 @@ var morgan = require("morgan");
 var compression = require("compression");
 var bodyParser = require("body-parser");
 
-
 var sass = require("node-sass-middleware");//Set SASS
 var validator = require("express-validator");//Set Validator
 var cookieSession = require("cookie-session");//Set Cookie & Session
+var session = require("express-session");
 
 module.exports = function(){
 	var app = express();
@@ -26,6 +26,7 @@ module.exports = function(){
 	}
 
 	app.use(cookieSession({name:"session",keys:["secret_key1","secret_key2","secret_key3"]}));
+	app.use(session({secret:"SecretCode",resave:false,saveUninitialized:true}));
 	app.use(bodyParser.urlencoded({extended:true}));
 	app.use(bodyParser.json());
 	

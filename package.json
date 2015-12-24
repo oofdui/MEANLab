@@ -9,6 +9,8 @@
 		"jade":"latest",
 		"node-sass-middleware":"latest",
 		"express-validator":"latest",
-		"cookie-session":"latest"
+		"cookie-session":"latest",
+		"express-session":"latest",
+		"mongoose":"latest"
 	}
 }
